@@ -8,7 +8,7 @@ int main(){
   int L, iter, count;
   while(cin>>L && L!=0){
     iter=0; count=0;
-    string arr[L-1], defDirec;
+    string arr[L], defDirec;
     for(int i=0; i<L-1; i++){
       cin >> arr[i];
     }
@@ -81,4 +81,5 @@ int main(){
       }
     }
   }
+  return 0;
 }
