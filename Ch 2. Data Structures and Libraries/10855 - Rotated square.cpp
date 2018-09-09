@@ -1,4 +1,5 @@
 // Problem: 10855 - Rotated square
+// This solution seems really simple and repetitive but it was ranked 26 on uhunt so it's really good. :wink:
 /**
  *  Author: DNS-404
  **/
