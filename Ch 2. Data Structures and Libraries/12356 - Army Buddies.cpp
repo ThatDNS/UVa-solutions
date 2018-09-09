@@ -7,6 +7,7 @@
 // The solution that I've implemented stores the value of left and right buddy
 // of each soldier. In each case, it changes the left/right value and then prints
 // the current buddies. This is of O(s+b). Total time on uhunt is 0.110.
+// NOTE: I'm using scanf and printf because they're faster than cout and cin.
 /**
  *  Author: DNS-404
  **/
