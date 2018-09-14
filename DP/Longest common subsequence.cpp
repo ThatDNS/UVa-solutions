@@ -1,9 +1,12 @@
+/*input
+acbcf abcdef
+*/
 // Longest common subsequence
 /*sample input
 acbcf abcdef
 */
 /**
- *  Author: DNS-404
+ *  Author DNS-404
  **/
 #include <bits/stdc++.h>
 using namespace std;
