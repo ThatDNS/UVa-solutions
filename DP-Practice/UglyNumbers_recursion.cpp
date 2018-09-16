@@ -15,7 +15,10 @@ bool checkUgly(int n);
 int main(){
   int n;
   cin >> n;
-  cout << checkUgly(n) << endl;
+  if(checkUgly(n))
+    cout << "Yes it's ugly!" << endl;
+  else
+    cout << "No it's not ugly!" << endl;
   return 0;
 }
 
