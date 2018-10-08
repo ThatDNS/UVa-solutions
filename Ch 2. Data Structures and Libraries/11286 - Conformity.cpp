@@ -4,7 +4,6 @@
  **/
 #include <bits/stdc++.h>
 using namespace std;
-bool isEqual(vector<int> a, vector<int> b);
 int main(){
 	int a, b, max, count=0;
 	vector<int> courses;
