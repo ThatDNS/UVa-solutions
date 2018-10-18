@@ -11,7 +11,7 @@ int main(){
 	while(n--){
 		cin >> a >> b >> c;
 		found=false;
-		for(int x=-100; x<=100 && !found; x++){
+		for(int x=-22; x<=22 && !found; x++){
 			for(int y=-100; y<=100 && !found; y++){
 				for(int z=-100; z<=100 && !found; z++){
 					if(x!=y && y!=z && z!=x && (x+y+z)==a && (x*y)*z==b && (x*x+y*y+z*z)==c){
