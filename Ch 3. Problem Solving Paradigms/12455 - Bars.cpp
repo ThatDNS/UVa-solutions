@@ -36,18 +36,3 @@ int main(){
 	return 0;
 }
 
-// Recursive (very slow)
-bool possible(int curr, vector<int> bars, int n, int sum){
-	if(sum == n)
-		return true;
-	if(sum > n)
-		return false;
-	for(int i=curr; i<bars.size()-1; i++){
-		if(possible(i+1, bars, n, sum)){
-			return true;
-		}else if(possible(i+1, bars, n, sum+bars[i])){
-			return true;
-		}
-	}
-	return false;
-}
