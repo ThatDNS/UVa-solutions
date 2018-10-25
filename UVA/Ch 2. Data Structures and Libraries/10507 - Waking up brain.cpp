@@ -1,4 +1,9 @@
 // Problem: 10507 - Waking up brain
+/* Concept:
+I created an adjacency list of the given graph and then iterated through it till all the vertices were awake.
+If after any iteration there was no change(no new vertex woke up) so i printed that it's not possible, else I
+incremented the number of years.
+*/
 /**
  *	Author: DNS-404
  **/
