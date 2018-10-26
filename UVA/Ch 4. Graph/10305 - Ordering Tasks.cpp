@@ -1,4 +1,7 @@
 // Problem: 10305 - Ordering Tasks
+/* Concept:
+Simple topological sorting problem
+*/
 /**
  *	Author: DNS-404
  **/
