@@ -53,12 +53,6 @@ int main(){
 			u = it1->second; v = it2->second;
 			adjList[u].pb(v);
 		}
-		// for(auto itt=records.begin(); itt!=records.end(); itt++){
-		// 	u = itt->first;
-		// 	v = itt->second;
-		// 	cout << u << " " << v << endl;
-		// 	adjList[u].pb(v);
-		// }
 		printf("Calling circles for data set %d:\n", ++numSSC);
 		for(int i=0; i<n; i++){
 			if(dfs_num[i] == -1)
