@@ -53,7 +53,7 @@ int main(){
 void bubbleSort(){
 	int temp, n = uu.size();
 	for(int i = 0; i < n-1; i++){    
-    for(int j = 0; j < n-i-1; j++){
+	for(int j = 0; j < n-i-1; j++){
 			if(uu[j] > uu[j+1]){
 				temp = uu[j];
 				uu[j] = uu[j+1];
@@ -73,7 +73,7 @@ void bubbleSort(){
 			}
 		}
 	}
-} 
+}
 
 
 void articulationPointAndBridge(int u){
