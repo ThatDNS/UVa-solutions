@@ -1,4 +1,9 @@
 // Problem: 574 - Sum It Up
+/*trick to avoid TL:
+After recursively calling an element, call only the elements AFTER that element.
+See how I did it using 'pos' variable.
+Side note: I used set to avoid duplicates;
+*/
 /**
  *	Author: DNS-404
  **/
