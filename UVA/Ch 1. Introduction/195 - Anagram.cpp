@@ -12,6 +12,7 @@ typedef vector<bool> vb;
 #define EPS 1e-9 // 10^-9
 #define pb push_back
 #define INF 1e9 // 10^9
+void permute(string s);
 bool Compare(char a, char b);
 int main(){
 	int n;
