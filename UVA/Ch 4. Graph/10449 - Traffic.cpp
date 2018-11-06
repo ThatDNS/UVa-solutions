@@ -12,7 +12,6 @@ typedef vector<bool> vb;
 #define EPS 1e-9 // 10^-9
 #define pb push_back
 #define INF 1e9 // 10^9xs
-int gcd(int a, int b);
 int main(){
 	short int n;
 	int temp, m, u, v, w, quer, dest, cases=0;
