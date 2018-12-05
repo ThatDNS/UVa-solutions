@@ -1,3 +1,7 @@
+/* Sample Input:
+8
+-7 10 9 2 3 8 8 1
+*/
 // Usual DP soln is O(n^2).
 // This is O(nlogn) solution for LIS.
 // https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
@@ -28,7 +32,6 @@ int main(){
 		scanf("%d", &arr[i]);
 	int lis = LIS(arr);
 	printf("Length: %d\n", lis);
-	//print();
 	return 0;
 }
 
@@ -37,22 +40,13 @@ int LIS(int arr[]){
 	lastEls.assign(n+2, 0);
 	int length = 1;
 	lastEls[0] = arr[0];
-	//print();
 	for(int i=1; i<n; i++){
-		//printf("Curr: %d\n", arr[i]);
-		if(arr[i] < lastEls[0]){ //new smallest element
-			//printf("Found new smallest! Changing %d to %d at 0\n", lastEls[0],arr[i]);
+		if(arr[i] < lastEls[0]) //new smallest element
 			lastEls[0] = arr[i];
-			//print();
-		}else if(arr[i] > lastEls[length-1]){ //new largest element
-			//printf("Found new largest! Adding %d in place of %d at %d\n", arr[i],lastEls[length+1],length+1);
+		else if(arr[i] > lastEls[length-1]) //new largest element
 			lastEls[length++] = arr[i];
-			//print();
-		}else{ //new element is somewhere in between
-			//printf("Was in between! Adding %d in place of %d at %d\n", arr[i],lastEls[findPosition(-1, length-1, arr[i])], findPosition(-1, length-1, arr[i]));
+		else //new element is somewhere in between
 			lastEls[findPosition(-1, length-1, arr[i])] = arr[i];
-			//print();
-		}
 	}
 	return length;
 }
