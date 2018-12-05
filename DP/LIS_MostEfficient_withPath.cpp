@@ -5,7 +5,7 @@
 */
 // Usual DP soln is O(n^2).
 // This is O(nlogn) solution for LIS.
-// Reference: https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
+// Reference(for concept): https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
 // Just remember three conditions given on this link.
 /**
  *	Author: DNS-404
