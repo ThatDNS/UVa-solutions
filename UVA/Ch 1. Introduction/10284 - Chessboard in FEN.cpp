@@ -1,6 +1,6 @@
 // Problem: 10284 - Chessboard in FEN
 /**
- *	Author: Fallen_Cryptic
+ *	Author: DNS404
  **/
 #include <bits/stdc++.h>
 using namespace std;
