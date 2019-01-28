@@ -51,8 +51,6 @@ int main(){
 		else
 			printf("Not divisible\n");
 	}
-
-	//cout << -21/7 + 1 << endl; // -6
 	return 0;
 }
 
