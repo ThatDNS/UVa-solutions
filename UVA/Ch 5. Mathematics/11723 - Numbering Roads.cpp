@@ -1,4 +1,4 @@
-// Problem: 11875 - Brick Game
+// Problem: 11723 - Numbering Roads
 /**
  *	Author: DNS404
  **/
@@ -38,17 +38,25 @@ typedef vector<int> vi;
 #define SWAP(a,b) a=a^b, b=a^b, a=a^b
 
 int main(){
-	int t, n, mid, cases=0;
-	sf(t);
-	while(t--){
-		sf(n);
-		int arr[n+2];
-		For0(i,n){
-			sf(arr[i]);
+	int r, n, cases=0, chars=0, temp;
+	while(cin >> r >> n && r && n){
+		printf("Case %d: ", ++cases);
+		if(r <= n){
+			printf("0\n");
+			continue;
 		}
-		sort(arr, arr+n);
-		mid = n/2;
-		printf("Case %d: %d\n", ++cases, arr[mid]);
+		chars = 0;
+		temp = n;
+		while(r > temp){
+			++chars;
+			temp += n;
+		}
+		if(chars > 26){
+			printf("impossible\n");
+		}else{
+			printf("%d\n", chars);
+		}
+
 	}
 	return 0;
 }
