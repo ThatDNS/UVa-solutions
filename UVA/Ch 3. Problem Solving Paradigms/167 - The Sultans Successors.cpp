@@ -36,7 +36,6 @@ int board[10][10], avail[10][10];
 vi allScores;
 void genNonAvail(int ix, int ij);
 void genAvail(int ix, int ij);
-void print();
 void waysSum(int ix, int ij, int score);
 
 int main(){
@@ -83,14 +82,6 @@ void waysSum(int ix, int ij, int score){
     }
   }
   return;
-}
-
-void print(){
-  for(int i=1; i<=8; i++){
-    for(int j=1; j<=8; j++)
-      cout << avail[i][j];
-    cout << endl;
-  }
 }
 
 void genNonAvail(int ix, int ij){
