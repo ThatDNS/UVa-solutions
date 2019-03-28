@@ -1,7 +1,10 @@
-// Problem: 11085 Back to the 8-Queens
+// Problem: 11085 Back to the 8-Queens (2 WAYS)
 /**
  *	Author: DNS-404
  **/
+
+// WAY 1
+
 #include <bits/stdc++.h>
 using namespace std;
 typedef pair<int, int> ii;
@@ -58,3 +61,65 @@ bool possible(int arr[]){
 	}
 	return true;
 }
+
+
+
+
+/*  ANOTHER WAY: USING BACKTRACKING  */
+
+// WAY 2
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int currRow[10]; // which row in index=col
+int finalPos[100][10], ind=0; // all possible combinations
+void placeIt(int row, int col);
+bool canPlace(int row, int col);
+
+int main(){
+  int diff, temp, count=0;
+  for(int r=1; r<=8; r++){
+    clr(currRow, 1);
+    placeIt(r, 1);
+  }
+  int p[10];
+  while(cin>>p[0]>>p[1]>>p[2]>>p[3]>>p[4]>>p[5]>>p[6]>>p[7]){
+    diff = INT_MAX;
+    for(int i=0; i<ind; i++){ // O(92*8)
+      temp = 0;
+      for(int j=1; j<=8; j++){
+        if(p[j-1] != finalPos[i][j])
+          ++temp;
+      }
+      diff = min(temp, diff);
+    }
+    printf("Case %d: %d\n", ++count, diff);
+  }
+  return 0;
+}
+
+void placeIt(int row, int col){
+  currRow[col] = row;
+  //terminate
+  if(col == 8){
+    for(int i=1; i<=8; i++)
+      finalPos[ind][i] = currRow[i];
+    ++ind;
+    return;
+  }
+
+  for(int r=1; r<=8; r++){ //for next col
+    if(canPlace(r, col+1))
+      placeIt(r, col+1);
+  }
+}
+
+bool canPlace(int row, int col){
+  for(int c=1; c<col; c++){
+    if(currRow[c] == row || abs(row-currRow[c]) == abs(col-c))
+      return false;
+  }
+  return true;
+}
+
