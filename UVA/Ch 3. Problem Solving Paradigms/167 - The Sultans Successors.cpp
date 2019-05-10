@@ -131,3 +131,82 @@ void genAvail(int ix, int iy){
   }
 }
 
+
+// Solved again soln: (same approach)
+
+#include <bits/stdc++.h>
+using namespace std;
+inline long long  MAX3(long long  a, long long  b,long long  c){return (a)>(b)?((a)>(c)?(a):(c)):((b)>(c)?(b):(c));}
+inline long long  MIN3(long long  a, long long b,long long c){return (a)<(b)?((a)<(c)?(a):(c)):((b)<(c)?(b):(c));}
+typedef pair<int, int> ii;
+typedef vector<bool> vb;
+typedef vector<int> vi;
+#define PI 3.14159265
+#define EPS 1e-9 // 10^-9
+#define pb push_back
+#define mp make_pair
+#define ll long long
+#define INF 1e9 // 10^9
+#define MOD 1000000007
+#define clr(x,a) memset(x,a,sizeof(x))
+#define disableSync ios_base::sync_with_stdio(false);
+#define disableAutoFlush cin.tie(NULL);
+
+int boardNums[10][10];
+int allPos[100][10], ind, currPos[10];
+void place(int row, int col);
+bool canPlace(int x, int y);
+
+int main(){
+  disableSync
+  int k;
+  ll sum, temp;
+  cin >> k;
+
+  // Preprocessing
+  ind = 0;
+  for(int c=1; c<=8; c++){
+    clr(currPos, 1);
+    place(1, c);
+  }
+
+  // Evaluating
+  while(k--){
+    sum = -1;
+    for(int i=1; i<=8; i++)
+      for(int j=1; j<=8; j++)
+        cin >> boardNums[i][j];
+    for(int i=0; i<=91; i++){
+      temp = 0;
+      for(int j=1; j<=8; j++){
+        temp += boardNums[j][allPos[i][j]];
+      }
+      sum = max(sum, temp);
+    }
+    cout << setw(5) << right << sum << endl;
+  }
+  return 0;
+}
+
+void place(int row, int col){
+  currPos[row] = col;
+  if(row == 8){
+    for(int i=1; i<=8; i++)
+      allPos[ind][i] = currPos[i];
+    ++ind;
+    return;
+  }
+  for(int c=1; c<=8; c++){
+    if(canPlace(row+1, c))
+      place(row+1, c);
+  }
+}
+
+bool canPlace(int rowNo, int colNo){
+  for(int r=1; r<rowNo; r++){
+    if(currPos[r]==colNo || abs(colNo-currPos[r]) == abs(rowNo-r))
+      return false;
+  }
+  return true;
+}
+
