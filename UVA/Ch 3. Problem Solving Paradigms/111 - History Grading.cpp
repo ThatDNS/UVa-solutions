@@ -19,12 +19,12 @@ typedef vector<int> vi;
 #define disableSync ios_base::sync_with_stdio(false);
 #define disableAutoFlush cin.tie(NULL);
 
-int n, c_rank[22], curr[22], LIS[22], dp[25][25];
+int n, c_rank[22], curr[22], LIS[22];
 bool comesAfter(int a, int b);
 
 int main(){
   int i, flag=0, ans, maxNum, temp;
-  string s, ns;
+  string s;
   while(getline(cin, s)){
     if(flag==0){
       n = stoi(s);
