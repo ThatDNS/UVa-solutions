@@ -1,47 +1,64 @@
 // Problem: 481 - What Goes Up
-/**
- *	Author: DNS-404
- **/
+
+/*
+arr[i]: Stores input elements
+L[i]: Stores the smallest ending value of all i length LISs found so far.
+L_id[i]: Simply stores the index of the value in L[i] as per in arr.
+Prev_id[i]: Stores the index of the previous element in the LIS ending at index i as per in arr.
+ans[i]: An extra vector I created because I didn't want to print answer recursively :P
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
+inline long long  MAX3(long long  a, long long  b,long long  c){return (a)>(b)?((a)>(c)?(a):(c)):((b)>(c)?(b):(c));}
+inline long long  MIN3(long long  a, long long b,long long c){return (a)<(b)?((a)<(c)?(a):(c)):((b)<(c)?(b):(c));}
 typedef pair<int, int> ii;
-typedef pair<int, ii> iii;
-typedef vector<ii> vii;
-typedef vector<int> vi;
 typedef vector<bool> vb;
+typedef vector<int> vi;
+#define PI 3.14159265
 #define EPS 1e-9 // 10^-9
 #define pb push_back
+#define mp make_pair
+#define ll long long
 #define INF 1e9 // 10^9
-
-// arr: Stores the numbers
-// P[i]: Stores the index of the prev element of ith element of lastEls
-int arr[1000000], P[1000000];
-// lastEls[i]: Stores the last value in subsequence of length i
-// L_id[i]: Stores the index of this value in arr.
-int lastEls[1000000], L_id[1000000];
-void print(int i);
+#define MOD 1000000007
+#define clr(x,a) memset(x,a,sizeof(x))
+#define disableSync ios_base::sync_with_stdio(false);
+#define disableAutoFlush cin.tie(NULL);
 
 int main(){
-	int no, i=0, length=0, end=0;
-	while(cin >> no){
-		arr[i] = no;
-		int pos = lower_bound(lastEls, lastEls+length, arr[i])-lastEls;
-		lastEls[pos] = arr[i];
-		L_id[pos] = i;
-		P[i] = pos>0 ? L_id[pos-1] : -1;
-		if(pos == length){
-			length++;
-			end = i;
-		}
-		++i;
-	}
-	printf("%d\n-\n", length);
-	print(end);
-	return 0;
-}
+  vi arr;
+  int temp, pos;
+  while(cin >> temp)
+    arr.pb(temp);
 
-void print(int i){
-	if(i < 0) return;
-	print(P[i]);
-	printf("%d\n", arr[i]);
+  vi L; vi L_id; vi Prev_id; vi ans;
+
+  for(int i=0; i<arr.size(); i++){
+    pos = lower_bound(L.begin(), L.end(), arr[i]) - L.begin();
+    if(pos == L.size()){
+      L.pb(arr[i]);
+      L_id.pb(i);
+    }else{
+      L[pos] = arr[i];
+      L_id[pos] = i;
+    }
+    if(pos == L.size() || pos == L.size()-1) temp = i;
+    if(pos == 0) Prev_id.pb(-1);
+    else Prev_id.pb(L_id[pos-1]);
+  }
+
+  printf("%lu\n-\n", L.size());
+
+  while(temp != -1){
+    ans.pb(arr[temp]);
+    temp = Prev_id[temp];
+  }
+
+  sort(ans.begin(), ans.end());
+
+  for(int i=0; i<ans.size(); i++)
+    cout << ans[i] << endl;
+  
+  return 0;
 }
