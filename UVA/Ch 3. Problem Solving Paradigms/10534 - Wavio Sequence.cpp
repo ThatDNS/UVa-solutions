@@ -1,0 +1,57 @@
+// Problem: 10534 - Wavio Sequence
+
+#include <bits/stdc++.h>
+using namespace std;
+inline long long  MAX3(long long  a, long long  b,long long  c){return (a)>(b)?((a)>(c)?(a):(c)):((b)>(c)?(b):(c));}
+inline long long  MIN3(long long  a, long long b,long long c){return (a)<(b)?((a)<(c)?(a):(c)):((b)<(c)?(b):(c));}
+#define vi vector<int>
+#define sf(n) scanf("%d", &n)
+#define sff(a,b) scanf("%d %d", &a, &b)
+#define sfff(a,b,c) scanf("%d %d %d", &a, &b, &c)
+#define pfn(n) printf("%d\n", n)
+#define pfs(n) printf("%d ", n)
+#define For0(i,n) for(int i=0; i<n; i++)
+#define ForF(i,a,b) for(int i=a; i<b; i++)
+#define pb push_back
+#define mp make_pair
+#define ll long long
+#define clr(x,a) memset(x,a,sizeof(x))
+#define disableSync ios_base::sync_with_stdio(false);
+#define disableAutoFlush cin.tie(NULL);
+
+int main(){
+  int n, el, pos, LSize, N;
+  vi arr, L, S1, S2;
+  while(sf(n) == 1){
+    arr.clear(); L.clear(); S1.clear(); S2.clear();
+    For0(i, n){
+      sf(el);
+      arr.pb(el);
+    }
+    el = -1;
+    For0(i, n){
+      pos = lower_bound(L.begin(), L.end(), arr[i]) - L.begin();
+      if(pos == L.size())
+        L.pb(arr[i]);
+      else
+        L[pos] = arr[i];
+      S1.pb(L.size());
+    }
+    L.clear();
+    for(int i=n-1; i>=0; i--){
+      pos = lower_bound(L.begin(), L.end(), arr[i]) - L.begin();
+      if(pos == L.size())
+        L.pb(arr[i]);
+      else
+        L[pos] = arr[i];
+      S2.pb(L.size());
+    }
+    N = 1;
+    For0(i, n)
+      N = max(N, min(S1[i], S2[n-i]));
+    // This N = (actual N)+1;
+    printf("%d\n", 2*(N-1)+1);
+  }
+  return 0;
+}
+
