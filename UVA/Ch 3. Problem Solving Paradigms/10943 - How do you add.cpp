@@ -1,29 +1,8 @@
 // Problem: 10943 - How do you add?
-/**
- *	Author: DNS404
- **/
+
+// Solved earlier using bottom up approach:
 #include <bits/stdc++.h>
 using namespace std;
-/*----------------------Graph Moves----------------*/
-//const int fx[]={+1,-1,+0,+0};
-//const int fy[]={+0,+0,+1,-1};
-//const int fx[]={+0,+0,+1,-1,-1,+1,-1,+1};   // Kings Move
-//const int fy[]={-1,+1,+0,+0,+1,+1,-1,-1};  // Kings Move
-//const int fx[]={-2, -2, -1, -1,  1,  1,  2,  2};  // Knights Move
-//const int fy[]={-1,  1, -2,  2, -2,  2, -1,  1}; // Knights Move
-/*------------------------------------------------*/
-/*---------------Bitmask---------------*/
-#define setBit(S, pos) (S |= (1 << pos))
-#define resetBit(S, pos) (S &= ~(1 << pos))
-#define checkBit(S, pos) (S & (1 << pos))
-#define toggleBit(S, pos) (S ^= (1 << pos))
-#define lowBit(S) (S & (-S)) //get least bit that is 1
-/*-------------------------------------*/
-typedef pair<int, int> ii;
-typedef pair<int, ii> iii;
-typedef vector<ii> vii;
-typedef vector<bool> vb;
-typedef vector<int> vi;
 #define EPS 1e-9 // 10^-9
 #define pb push_back
 #define ll long long
@@ -57,3 +36,53 @@ int main(){
 	return 0;
 }
 
+
+// Solved later again using top down approach:
+#include <bits/stdc++.h>
+using namespace std;
+inline long long  MAX3(long long  a, long long  b,long long  c){return (a)>(b)?((a)>(c)?(a):(c)):((b)>(c)?(b):(c));}
+inline long long  MIN3(long long  a, long long b,long long c){return (a)<(b)?((a)<(c)?(a):(c)):((b)<(c)?(b):(c));}
+#define vi vector<int>
+#define sf(n) scanf("%d", &n)
+#define sff(a,b) scanf("%d %d", &a, &b)
+#define sfff(a,b,c) scanf("%d %d %d", &a, &b, &c)
+#define pfn(n) printf("%d\n", n)
+#define pfs(n) printf("%d ", n)
+#define For0(i,n) for(int i=0; i<n; i++)
+#define ForF(i,a,b) for(int i=a; i<=b; i++)
+#define pb push_back
+#define mp make_pair
+#define ll long long
+#define clr(x,a) memset(x,a,sizeof(x))
+#define disableSync ios_base::sync_with_stdio(false);
+#define disableAutoFlush cin.tie(NULL);
+
+int CalcWays(int n, int k);
+int memo[102][102];
+
+int main(){
+  int n, k, ways;
+  clr(memo, -1);
+  while(sff(n,k)==2 && n && k){
+    ways = 0;
+    ForF(i,0,n){
+      ways += CalcWays(n-i,k-1)%1000000;
+    }
+    printf("%d\n", ways%1000000);
+  }
+  return 0;
+}
+
+int CalcWays(int n, int k){
+  if(k == 0){
+    if(n != 0) return 0;
+    else return 1;
+  }
+  if(memo[n][k] != -1)
+    return memo[n][k];
+  int sum=0;
+  ForF(i,0,n){
+    sum += CalcWays(n-i, k-1)%1000000;
+  }
+  return memo[n][k] = sum%1000000;
+}
