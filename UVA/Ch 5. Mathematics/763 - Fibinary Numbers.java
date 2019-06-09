@@ -14,13 +14,15 @@ class Main {
     int j;
     int[] indices = new int[125];
     Boolean firstFound = false, flag=false;
+    String s1, s2;
+    BigInteger val1, val2;
     while(sc.hasNext()){
-      String s1 = sc.next();
-      String s2 = sc.next();
+      s1 = sc.next();
+      s2 = sc.next();
       if(flag){System.out.print("\n");}
       else{flag=true;}
-      BigInteger val1 = BigInteger.ZERO;
-      BigInteger val2 = BigInteger.ZERO;
+      val1 = BigInteger.ZERO;
+      val2 = BigInteger.ZERO;
       j=0;
       for(int i=s1.length()-1; i>=0; i--){
         if(s1.charAt(i) == '1')
